@@ -27,11 +27,20 @@
 
 The application expects the hardware base to be accessible at `http://inkuboturn.local` (or configured IP) and respond to the following endpoints:
 
-* `GET /status` - Returns `{ "status": "idle" }` or `{ "status": "running" }`
+* `GET /status` - Returns `{ "status": "idle" }` or `{ "status": "moving" }`
 * `POST /move?steps={x}&speed={y}` - Rotates the stepper motor by `x` steps at `y` speed.
-* `POST /spin?speed={y}` - Starts continuous rotation.
+* `POST /continuous?speed={y}` - Starts continuous rotation.
 * `POST /stop` - Immediately halts the motor.
 
+## 🔧 Hardware Setup (ESP8266)
+
+The C++ firmware for the motorized base is located in the `firmware/` directory.
+
+1. Open `firmware/inkubo_turn.ino` in the Arduino IDE.
+2. Install the **ESP8266** board support via Boards Manager.
+3. Update the Wi-Fi credentials on line 93: `WiFi.begin("YOUR_WIFI_SSID", "YOUR_WIFI_PASSWORD");`
+4. Connect your ESP8266/NodeMCU to your PC and flash the firmware.
+5. The device will host an mDNS service and be accessible at `http://inkuboturn.local` on your local network.
 ## 📸 Screenshots & UI
 
 *(Add your app screenshots here!)*

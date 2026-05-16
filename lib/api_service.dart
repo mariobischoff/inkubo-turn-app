@@ -46,7 +46,7 @@ class ApiService {
   // Comandos manuais
   Future<bool> startContinuousSpin({int? speed}) async {
     try {
-      String url = '$baseUrl/spin';
+      String url = '$baseUrl/continuous';
       if (speed != null) url += '?speed=$speed';
       // Usando uma rota de spin contínuo, se não existir, usa move com passos altos
       final response = await http.post(Uri.parse(url));
